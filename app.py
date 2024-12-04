@@ -6,10 +6,12 @@ import uvicorn
 from fastapi import FastAPI
 from aiogram import Bot, Dispatcher, types
 from aiogram.fsm.storage.memory import MemoryStorage
+from sqladmin import Admin
 from starlette.middleware.cors import CORSMiddleware
 
 from core.config.bot import settings_bot
 from core.config.proj_settings import settings
+from core.db.db_helper import db_helper
 from src.bot.middlewares.config import ConfigMiddleware
 from src.bot.routers import register_bot_routes
 from src.web.routers import get_apps_router
@@ -53,6 +55,15 @@ def get_application() -> FastAPI:
 
 
 app = get_application()
+
+# Register admin
+admin = Admin(
+    app,
+    engine=db_helper.engine,
+    session_maker=db_helper.session_factory,
+)
+
+add_admin_views(admin)
 
 # Register middlewares
 dp.update.middleware(ConfigMiddleware(settings_bot))

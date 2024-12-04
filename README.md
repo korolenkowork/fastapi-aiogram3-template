@@ -2,6 +2,8 @@
 
 Personal template for FastApi & Aiogram3
 
+Include admin panel using sqladmin
+
 Feel free to use :)
 
 Requirements:
@@ -14,6 +16,7 @@ Requirements:
     <li>sqlalchemy = "^2.0.28"</li>
     <li>alembic = "^1.13.1"</li>
     <li>asyncpg = "^0.29.0"</li>
+    <li>sqladmin = "^0.20.1"</li>
 </ul>
 
 ## How to make migrations?
