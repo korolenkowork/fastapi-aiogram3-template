@@ -14,7 +14,7 @@ from core.config.proj_settings import settings
 from core.db.db_helper import db_helper
 from src.bot.middlewares.config import ConfigMiddleware
 from src.bot.routers import register_bot_routes
-from src.web.routers import get_apps_router
+from src.api.routers import get_apps_router
 
 logger = logging.getLogger(__name__)
 
